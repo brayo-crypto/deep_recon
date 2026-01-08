@@ -13,5 +13,7 @@ paramspider>=1.0.0
 # Optional: For better SSL warnings handling
 urllib3>=2.0.0
 
-# Optional: For colored terminal output (if you want to add this feature)
+# Optional: For a colored terminal output (if you want to add this feature)
 # colorama>=0.4.6
+
+#Just had to :)
