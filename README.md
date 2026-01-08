@@ -1,4 +1,4 @@
-# Deep Recon Scanner
+# Deep Recon
 
 <div align="center">
 
@@ -12,7 +12,7 @@
 
 ## 📋 Overview
 
-Deep Recon Scanner is an automated reconnaissance tool designed for security researchers and penetration testers. It performs comprehensive information gathering on target websites, including subdomain enumeration, URL discovery, parameter extraction, technology detection, and vulnerability scanning.
+Deep Recon is an automated reconnaissance tool designed for security researchers and penetration testers. It performs comprehensive information gathering on target websites, including subdomain enumeration, URL discovery, parameter extraction, technology detection, and vulnerability scanning.
 
 
 **I hashed many details so that it could be simple for me to modify the code and dont get lost in it.**
@@ -69,8 +69,8 @@ The following tools must be installed and available in your PATH:
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/brayo-crypto/deep_recon-scanner.git
-cd deep_recon-scanner
+git clone https://github.com/brayo-crypto/deep_recon.git
+cd deep_recon
 ```
 
 ### 2. Install Python dependencies
