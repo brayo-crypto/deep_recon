@@ -1,4 +1,3 @@
-#!/bin/bash
 set -e
 
 echo "=================================================="
@@ -6,24 +5,20 @@ echo "  deep_recon Scanner - Dependency Installation"
 echo "=================================================="
 echo ""
 
-# Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+NC='\033[0m'
 
-# Check if running as root
 if [ "$EUID" -eq 0 ]; then 
     echo -e "${RED}Please don't run this script as root${NC}"
     exit 1
 fi
 
-# Function to check if a command exists
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
-# Check Python
 echo -e "${YELLOW}[1/4] Checking Python...${NC}"
 if command_exists python3; then
     PYTHON_VERSION=$(python3 --version | cut -d' ' -f2)
@@ -33,7 +28,6 @@ else
     exit 1
 fi
 
-# Check Go
 echo -e "${YELLOW}[2/4] Checking Go...${NC}"
 if command_exists go; then
     GO_VERSION=$(go version | awk '{print $3}')
@@ -42,14 +36,12 @@ else
     echo -e "${RED}✗ Go not found${NC}"
     echo "Installing Go..."
     
-    # Detect OS
     OS=$(uname -s)
     if [ "$OS" == "Linux" ]; then
         wget https://go.dev/dl/go1.21.5.linux-amd64.tar.gz
         sudo tar -C /usr/local -xzf go1.21.5.linux-amd64.tar.gz
         rm go1.21.5.linux-amd64.tar.gz
         
-        # Add to PATH
         echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
         echo 'export PATH=$PATH:$HOME/go/bin' >> ~/.bashrc
         source ~/.bashrc
@@ -66,16 +58,13 @@ else
     echo -e "${GREEN}✓ Go installed${NC}"
 fi
 
-# Ensure Go bin is in PATH
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
 
-# Install Python dependencies
 echo -e "${YELLOW}[3/4] Installing Python dependencies...${NC}"
 pip3 install -r requirements.txt
 echo -e "${GREEN}✓ Python dependencies installed${NC}"
 
-# Install Go tools
 echo -e "${YELLOW}[4/4] Installing Go-based tools...${NC}"
 echo "This may take a few minutes..."
 
@@ -97,13 +86,11 @@ done
 
 echo -e "${GREEN}✓ Go tools installed${NC}"
 
-# Update Nuclei templates
 echo ""
 echo -e "${YELLOW}Updating Nuclei templates...${NC}"
 nuclei -update-templates -silent
 echo -e "${GREEN}✓ Nuclei templates updated${NC}"
 
-# Verify installations
 echo ""
 echo "=================================================="
 echo "  Verifying Installation"
