@@ -69,7 +69,7 @@ The following tools must be installed and available in your PATH:
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/brayo-crypto/deep_recon-scanner.git
+git clone git clone https://github.com/brayo-crypto/deep_recon-scanner.git
 cd deep_recon-scanner
 ```
 
