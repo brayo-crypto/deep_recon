@@ -8,7 +8,7 @@ requests>=2.31.0
 wafw00f>=2.2.0
 
 # Parameter Discovery
-paramspider>=1.0.0
+git+https://github.com/devanshbatham/ParamSpider.git
 
 # Optional: For better SSL warnings handling
 urllib3>=2.0.0
