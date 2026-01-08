@@ -2,7 +2,7 @@
 set -e
 
 echo "=================================================="
-echo "  Deep Recon Scanner - Dependency Installation"
+echo "  deep_recon Scanner - Dependency Installation"
 echo "=================================================="
 echo ""
 
