@@ -1,7 +1,7 @@
 #
 """
 made by Yobra/Brayo
-my discord is Yobra
+my discord is @Yobra8752
 notee:For authorized security testing only,I am not responsible for whatever you choose to do with this tool so use your brain
 """
 
