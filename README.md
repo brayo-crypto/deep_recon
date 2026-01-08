@@ -73,8 +73,13 @@ git clone https://github.com/brayo-crypto/deep_recon.git
 cd deep_recon
 ```
 
-### 2. Install Python dependencies
+### 2. Install everything
+
 ```bash
+git clone https://github.com/brayo-crypto/deep_recon-scanner.git
+cd deep_recon-scanner
+chmod +x install.sh
+./install.sh
 pip install -r requirements.txt
 ```
 
