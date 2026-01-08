@@ -1,0 +1,17 @@
+# Deep Recon Scanner - Python Requirements
+# Install with: pip install -r requirements.txt
+
+# HTTP Requests
+requests>=2.31.0
+
+# WAF Detection
+wafw00f>=2.2.0
+
+# Parameter Discovery
+paramspider>=1.0.0
+
+# Optional: For better SSL warnings handling
+urllib3>=2.0.0
+
+# Optional: For colored terminal output (if you want to add this feature)
+# colorama>=0.4.6
