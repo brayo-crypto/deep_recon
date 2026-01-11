@@ -564,7 +564,7 @@ class DeepReconScanner:
         print("  ⏳ This may take a while...\n")
         
         nuclei_cmd = f"nuclei -u {self.target} -tags cve,exposure,misconfig -severity critical,high,medium -silent"
-        nuclei_out = self.run_command(nuclei_cmd, timeout=600)
+        nuclei_out = self.run_command(nuclei_cmd, timeout=3600)
         
         if nuclei_out and nuclei_out.strip():
             vulns = nuclei_out.strip().split('\n')
