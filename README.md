@@ -26,7 +26,7 @@ This tool is intended for legal security research and authorized penetration tes
 
 The author is not responsible for misuse or damage caused by this tool. Use responsibly and ethically.
 
-## ✨ Features
+## ✨ Features  ✅📄📊💡💡💡💡💡💡💡💡💡💡💡
 
 - **Technology Detection**: Identifies web servers, frameworks, CMS platforms, and frontend technologies
 - **WAF Detection**: Detects Web Application Firewalls protecting the target
