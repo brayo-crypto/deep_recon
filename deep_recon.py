@@ -563,7 +563,7 @@ class DeepReconScanner:
         print("  → Running Nuclei with CVE + exposed-panels templates...")
         print("  ⏳ This may take a while...\n")
         
-        nuclei_cmd = f"nuclei -u {self.target} -tags cve,exposure,misconfig -severity critical,high,medium -tc \"id.regex('cve-202[2-6]')\" -silent"
+        nuclei_cmd = f"nuclei -u {self.target} -t cves/2022/ -t cves/2023/ -t cves/2024/ -t cves/2025/ -t cves/2026/ -tags exposure,misconfig -severity critical,high,medium -silent"
         nuclei_out = self.run_command(nuclei_cmd, timeout=3600)
         
         if nuclei_out and nuclei_out.strip():
