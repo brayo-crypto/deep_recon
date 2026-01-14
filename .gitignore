@@ -1,67 +1,50 @@
-# Deep_Recon Scanner - Git Ignore File
-
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-*.log
-
-# Virtual Environment
 venv/
 env/
+.venv/
 ENV/
 env.bak/
 venv.bak/
 
-# IDE
+# Data files
+*.log
+*.db
+*.sqlite
+*.json
+recon.log
+scan_*.json
+*_FULL_RECON_REPORT.txt
+
+# Directories
+scans/
+reports/
+data/
+output/
+temp/
+tmp/
+logs/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Docker
+*.tar
+*.gz
+
+# Editor files
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-.DS_Store
-
-# Scan Results - IMPORTANT: Don't commit scan results!
-*_FULL_RECON_REPORT.txt
-*_report.txt
-*.json.report
-output/
-results/
-reports/
-
-# Nuclei
-nuclei-templates/
-.nuclei/
-
-# Temp files
-*.tmp
-temp/
-tmp/
-
-# OS
-Thumbs.db
-.DS_Store
-
-# Backup files
-*.bak
-*.backup
