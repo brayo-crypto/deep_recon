@@ -70,7 +70,8 @@ The following tools must be installed and available in your PATH:
 <(curl -s https://raw.githubusercontent.com/brayo-crypto/deep_recon/main/install-docker.sh)
 ```
 # Usage
-./run.sh https://example.com
+```bash
+python3 deep_recon.py <target_url>
 ```
 
 ## 📊 Output
