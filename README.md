@@ -69,8 +69,8 @@ The following tools must be installed and available in your PATH:
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/brayo-crypto/deep_recon.git
-cd deep_recon
+# Install Docker and Deep Recon in one command
+bash <(curl -s https://raw.githubusercontent.com/brayo-crypto/deep_recon/main/install-docker.sh)
 ```
 
 ### 2. Install everything
