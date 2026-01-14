@@ -66,37 +66,11 @@ The following tools must be installed and available in your PATH:
 - `openssl` - For SSL/TLS analysis (usually pre-installed on Linux/macOS)
 
 ## 📦 Installation
-
-### 1. Clone the repository
 ```bash
-# Install Docker and Deep Recon in one command
-bash <(curl -s https://raw.githubusercontent.com/brayo-crypto/deep_recon/main/install-docker.sh)
+<(curl -s https://raw.githubusercontent.com/brayo-crypto/deep_recon/main/install-docker.sh)
 ```
-
-### 2. Install everything
-# Option 1: Use our pre-built script
+# Usage
 ./run.sh https://example.com
-
-# Option 2: Manual Docker run
-docker run -it -v $(pwd)/scans:/app/scans deep-recon https://example.com
-
-# Option 3: Docker Compose
-docker-compose run deep-recon https://example.com
-
-## 🚀 Usage
-
-### Basic Usage
-```bash
-python3 deep_recon.py <target_url>
-```
-
-### Examples
-```bash
-# Scan with HTTPS (recommended)
-python3 deep_recon.py https://example.com
-
-# Scan with automatic HTTPS (will add https://)
-python3 deep_recon.py example.com
 ```
 
 ## 📊 Output
