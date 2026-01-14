@@ -1,0 +1,14 @@
+# Docker ignore file
+.git
+.gitignore
+*.log
+*.pyc
+__pycache__/
+venv/
+scans/
+reports/
+data/
+test*
+tmp/
+*.swp
+.DS_Store

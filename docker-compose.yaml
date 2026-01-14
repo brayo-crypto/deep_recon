@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  deep-recon:
+    build: .
+    image: deep-recon:latest
+    container_name: deep-recon
+    volumes:
+      # Mount for scan outputs
+      - ./scans:/app/scans
+      # Mount for reports
+      - ./reports:/app/reports
+      # Mount for configuration (optional)
+      - ./config:/app/config
+    environment:
+      - GEOIP_DATABASE=/app/data/GeoLite2-City.mmdb
+      - SCAN_TIMEOUT=3600
+      - MAX_WORKERS=10
+    # Use host network for better scanning
+    network_mode: "host"
+    # Or bridge network for isolated
+    # networks:
+    #   - recon-net
+    restart: "no"
+    stdin_open: true
+    tty: true
+    # For resource limits (optional)
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '2'
+    #       memory: 4G
+
+# Networks (if using bridge mode)
+# networks:
+#   recon-net:
+#     driver: bridge
