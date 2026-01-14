@@ -74,49 +74,14 @@ cd deep_recon
 ```
 
 ### 2. Install everything
+# Option 1: Use our pre-built script
+./run.sh https://example.com
 
-```bash
-git clone https://github.com/brayo-crypto/deep_recon.git
-cd deep_recon
-chmod +x install.sh
-./install.sh
-pip install -r requirements.txt
-```
+# Option 2: Manual Docker run
+docker run -it -v $(pwd)/scans:/app/scans deep-recon https://example.com
 
-### 3. Install Go tools (if not already installed)
-
-**Install Go** (if needed):
-```bash
-# Linux
-wget https://go.dev/dl/go1.21.0.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:~/go/bin
-
-# macOS
-brew install go
-```
-
-**Install all Go-based tools**:
-```bash
-go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
-go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
-go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
-go install github.com/projectdiscovery/katana/cmd/katana@latest
-go install github.com/tomnomnom/waybackurls@latest
-go install github.com/lc/gau/v2/cmd/gau@latest
-go install github.com/tomnomnom/assetfinder@latest
-```
-
-**Install Python-based tools**:
-```bash
-pip install paramspider wafw00f
-```
-
-### 4. Update Nuclei templates (recommended)
-```bash
-nuclei -update-templates
-```
+# Option 3: Docker Compose
+docker-compose run deep-recon https://example.com
 
 ## 🚀 Usage
 
