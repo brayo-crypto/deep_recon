@@ -114,7 +114,7 @@ class DeepReconScanner:
         if 'behind' in output.lower():
             waf = re.search(r'behind (.+?)(?:\n|$)', output, re.IGNORECASE)
             waf_name = waf.group(1).strip() if waf else "Detected (unknown)"
-            print(f"  ⚠️  WAF Detected: {waf_name}")
+            print(f"    WAF Detected: {waf_name}")
             self.results['findings']['waf'] = waf_name
         else:
             print("  ✓ No WAF detected")
@@ -122,7 +122,7 @@ class DeepReconScanner:
     
     def security_headers(self):
         """Analyze security headers"""
-        print("\n[3/10] 🔐 Security Headers Analysis")
+        print("\n[3/10]  Security Headers Analysis")
         print("=" * 60)
         
         try:
@@ -152,7 +152,7 @@ class DeepReconScanner:
     
     def ssl_analysis(self):
         """Analyze SSL/TLS configuration"""
-        print("\n[4/10] 🔒 SSL/TLS Certificate Analysis")
+        print("\n[4/10]  SSL/TLS Certificate Analysis")
         print("=" * 60)
         
         # Use testssl.sh if available, otherwise basic check
@@ -178,7 +178,7 @@ class DeepReconScanner:
                 print("  ✗ SSL Certificate: Invalid or not found")
                 self.results['findings']['ssl'] = 'Invalid'
         else:
-            print("  ⚠️  Could not analyze SSL")
+            print("    Could not analyze SSL")
     
     def url_discovery(self):
         """Discover URLs using multiple methods"""
@@ -211,7 +211,7 @@ class DeepReconScanner:
             urls.update(found)
             print(f"    ✓ Found {len(found)} URLs via GAU")
         
-        print(f"\n  📊 Total unique URLs discovered: {len(urls)}")
+        print(f"\n   Total unique URLs discovered: {len(urls)}")
         
         # Categorize URLs by potential vulnerability
         xss_urls = []
@@ -240,13 +240,13 @@ class DeepReconScanner:
         
         # Show categorized counts
         if xss_urls:
-            print(f"  🎯 XSS-prone URLs: {len(xss_urls)}")
+            print(f"   XSS-prone URLs: {len(xss_urls)}")
         if sqli_urls:
-            print(f"  🎯 SQLi-prone URLs: {len(sqli_urls)}")
+            print(f"   SQLi-prone URLs: {len(sqli_urls)}")
         if lfi_urls:
-            print(f"  🎯 LFI-prone URLs: {len(lfi_urls)}")
+            print(f"   LFI-prone URLs: {len(lfi_urls)}")
         if upload_urls:
-            print(f"  🎯 File Upload URLs: {len(upload_urls)}")
+            print(f"   File Upload URLs: {len(upload_urls)}")
         
         self.results['findings']['urls'] = {
             'count': len(urls),
@@ -287,12 +287,12 @@ class DeepReconScanner:
                 'list': api_endpoints
             }
         else:
-            print("  ⚠️  No API endpoints detected")
+            print("    No API endpoints detected")
             self.results['findings']['api_endpoints'] = {'count': 0, 'list': []}
     
     def parameter_discovery(self):
         """Extract all parameters from URLs"""
-        print("\n[7/10] 📝 Parameter Discovery")
+        print("\n[7/10]  Parameter Discovery")
         print("=" * 60)
         
         # Use ParamSpider
@@ -353,17 +353,17 @@ class DeepReconScanner:
             
             # Show categorized findings
             if xss_params:
-                print(f"  🎯 XSS-prone parameters: {len(xss_params)}")
+                print(f"   XSS-prone parameters: {len(xss_params)}")
             if sqli_params:
-                print(f"  🎯 SQLi-prone parameters: {len(sqli_params)}")
+                print(f"   SQLi-prone parameters: {len(sqli_params)}")
             if lfi_params:
-                print(f"  🎯 LFI-prone parameters: {len(lfi_params)}")
+                print(f"   LFI-prone parameters: {len(lfi_params)}")
             if idor_params:
-                print(f"  🎯 IDOR-prone parameters: {len(idor_params)}")
+                print(f"   IDOR-prone parameters: {len(idor_params)}")
             if ssrf_params:
-                print(f"  🎯 SSRF-prone parameters: {len(ssrf_params)}")
+                print(f"   SSRF-prone parameters: {len(ssrf_params)}")
             if redirect_params:
-                print(f"  🎯 Open Redirect-prone parameters: {len(redirect_params)}")
+                print(f"   Open Redirect-prone parameters: {len(redirect_params)}")
             
             self.results['findings']['parameters'] = {
                 'count': len(params),
@@ -378,7 +378,7 @@ class DeepReconScanner:
                 }
             }
         else:
-            print("  ⚠️  No parameters discovered")
+            print("    No parameters discovered")
             self.results['findings']['parameters'] = {
                 'count': 0, 
                 'list': [],
@@ -433,12 +433,12 @@ class DeepReconScanner:
                 analytics = [d for d in external_domains if any(x in d.lower() for x in ['analytics', 'google', 'facebook', 'hotjar'])]
                 
                 if cdns:
-                    print(f"\n  📦 CDNs ({len(cdns)}):")
+                    print(f"\n   CDNs ({len(cdns)}):")
                     for cdn in cdns[:5]:
                         print(f"    • {cdn}")
                 
                 if analytics:
-                    print(f"\n  📊 Analytics/Tracking ({len(analytics)}):")
+                    print(f"\n   Analytics/Tracking ({len(analytics)}):")
                     for tracker in analytics[:5]:
                         print(f"    • {tracker}")
                 
@@ -449,14 +449,14 @@ class DeepReconScanner:
                     'all': list(external_domains)
                 }
             else:
-                print("  ℹ️  No external resources detected")
+                print("    No external resources detected")
                 
         except Exception as e:
             print(f"  ✗ Error: {e}")
     
     def subdomain_enumeration(self):
         """Enumerate subdomains"""
-        print("\n[9/10] 🌐 Subdomain Enumeration")
+        print("\n[9/10]  Subdomain Enumeration")
         print("=" * 60)
         
         subdomains = set()
@@ -478,7 +478,7 @@ class DeepReconScanner:
             print(f"    ✓ Found {len(found)} subdomains")
         
         if subdomains:
-            print(f"\n  📊 Total unique subdomains: {len(subdomains)}")
+            print(f"\n   Total unique subdomains: {len(subdomains)}")
             
             # Filter with httpx to find alive hosts
             print("\n  → Filtering live hosts with httpx...")
@@ -521,17 +521,17 @@ class DeepReconScanner:
                 print(f"  ✓ {len(alive_hosts)} subdomains are live and responding")
                 
                 if forbidden_hosts:
-                    print(f"  🔒 {len(forbidden_hosts)} hosts returned 403 Forbidden (HIGH VALUE!)")
+                    print(f"   {len(forbidden_hosts)} hosts returned 403 Forbidden (HIGH VALUE!)")
                     print("\n  Sample 403 hosts:")
                     for host in forbidden_hosts[:3]:
-                        print(f"    🎯 {host}")
+                        print(f"     {host}")
                 
                 # Show sample live hosts with details
                 print("\n  Sample live hosts:")
                 for detail in alive_details[:5]:
                     print(f"    • {detail}")
             else:
-                print("  ⚠️  No live hosts found or httpx failed")
+                print("    No live hosts found or httpx failed")
                 
             self.results['findings']['subdomains'] = {
                 'total': len(subdomains),
@@ -543,7 +543,7 @@ class DeepReconScanner:
                 'forbidden_list': forbidden_hosts
             }
         else:
-            print("  ⚠️  No subdomains found")
+            print("    No subdomains found")
             self.results['findings']['subdomains'] = {
                 'total': 0, 
                 'alive': 0,
@@ -556,7 +556,7 @@ class DeepReconScanner:
     
     def vulnerability_scan(self):
         """Scan for known vulnerabilities"""
-        print("\n[10/10] 🚨 Vulnerability Scanning (Nuclei)")
+        print("\n[10/10]  Vulnerability Scanning (Nuclei)")
         print("=" * 60)
         
         # Run Nuclei with CVE templates
@@ -568,10 +568,10 @@ class DeepReconScanner:
         
         if nuclei_out and nuclei_out.strip():
             vulns = nuclei_out.strip().split('\n')
-            print(f"  ⚠️  Found {len(vulns)} potential issues!")
+            print(f"    Found {len(vulns)} potential issues!")
             
             # Show critical/high
-            print("\n  🚨 Sample findings:")
+            print("\n   Sample findings:")
             for vuln in vulns[:5]:
                 print(f"    • {vuln}")
             
@@ -586,7 +586,7 @@ class DeepReconScanner:
     def generate_report(self):
         """Generate final comprehensive report in ONE file"""
         print("\n" + "=" * 60)
-        print("📋 GENERATING MASTER REPORT")
+        print(" GENERATING REPORT")
         print("=" * 60)
         
         findings = self.results['findings']
@@ -643,22 +643,22 @@ class DeepReconScanner:
             subdomains = findings.get('subdomains', {})
             f.write(f"  Total Found: {subdomains.get('total', 0)}\n")
             f.write(f"  Live Hosts: {subdomains.get('alive', 0)}\n")
-            f.write(f"  🔒 403 Forbidden: {subdomains.get('forbidden_count', 0)}\n\n")
+            f.write(f"   403 Forbidden: {subdomains.get('forbidden_count', 0)}\n\n")
             
             # Write 403 FORBIDDEN section first (HIGH VALUE)
             forbidden_list = subdomains.get('forbidden_list', [])
             if forbidden_list:
-                f.write("  🎯 403 FORBIDDEN HOSTS (HIGH PRIORITY - BYPASS OPPORTUNITIES!):\n")
+                f.write("   403 FORBIDDEN HOSTS (HIGH PRIORITY - BYPASS OPPORTUNITIES!):\n")
                 f.write("  " + "="*95 + "\n")
                 for i, host in enumerate(forbidden_list, 1):
                     f.write(f"    {i}. {host}\n")
-                f.write("\n  💡 403s often indicate:\n")
+                f.write("\n   403s often indicate:\n")
                 f.write("     - Admin panels\n")
                 f.write("     - Internal tools\n")
                 f.write("     - Staging/dev environments\n")
                 f.write("     - API endpoints with weak auth\n")
                 f.write("     - Misconfigured access controls\n")
-                f.write("\n  🔓 Bypass techniques to try:\n")
+                f.write("\n   Bypass techniques to try:\n")
                 f.write("     - Path manipulation (/../, /./)\n")
                 f.write("     - HTTP method tampering (POST, PUT, PATCH)\n")
                 f.write("     - Header injection (X-Original-URL, X-Rewrite-URL)\n")
@@ -700,7 +700,7 @@ class DeepReconScanner:
             
             xss_urls = categorized.get('xss', [])
             if xss_urls:
-                f.write(f"  🎯 XSS-PRONE URLS ({len(xss_urls)}):\n")
+                f.write(f"   XSS-PRONE URLS ({len(xss_urls)}):\n")
                 f.write("  " + "="*95 + "\n")
                 for url in xss_urls[:50]:  # First 50
                     f.write(f"  {url}\n")
@@ -710,7 +710,7 @@ class DeepReconScanner:
             
             sqli_urls = categorized.get('sqli', [])
             if sqli_urls:
-                f.write(f"  🎯 SQLi-PRONE URLS ({len(sqli_urls)}):\n")
+                f.write(f"   SQLi-PRONE URLS ({len(sqli_urls)}):\n")
                 f.write("  " + "="*95 + "\n")
                 for url in sqli_urls[:50]:
                     f.write(f"  {url}\n")
@@ -720,7 +720,7 @@ class DeepReconScanner:
             
             lfi_urls = categorized.get('lfi', [])
             if lfi_urls:
-                f.write(f"  🎯 LFI-PRONE URLS ({len(lfi_urls)}):\n")
+                f.write(f"   LFI-PRONE URLS ({len(lfi_urls)}):\n")
                 f.write("  " + "="*95 + "\n")
                 for url in lfi_urls[:50]:
                     f.write(f"  {url}\n")
@@ -730,7 +730,7 @@ class DeepReconScanner:
             
             upload_urls = categorized.get('upload', [])
             if upload_urls:
-                f.write(f"  🎯 FILE UPLOAD URLS ({len(upload_urls)}):\n")
+                f.write(f"   FILE UPLOAD URLS ({len(upload_urls)}):\n")
                 f.write("  " + "="*95 + "\n")
                 for url in upload_urls:
                     f.write(f"  {url}\n")
@@ -758,51 +758,51 @@ class DeepReconScanner:
             
             xss_params = categorized.get('xss', [])
             if xss_params:
-                f.write(f"  🎯 XSS-PRONE PARAMETERS ({len(xss_params)}):\n")
+                f.write(f"   XSS-PRONE PARAMETERS ({len(xss_params)}):\n")
                 f.write("  " + "="*95 + "\n")
                 for param in xss_params:
                     f.write(f"  {param}\n")
-                f.write("\n  💡 Test with: <script>alert(1)</script>, <img src=x onerror=alert(1)>\n\n")
+                f.write("\n   Test with: <script>alert(1)</script>, <img src=x onerror=alert(1)>\n\n")
             
             sqli_params = categorized.get('sqli', [])
             if sqli_params:
-                f.write(f"  🎯 SQLi-PRONE PARAMETERS ({len(sqli_params)}):\n")
+                f.write(f"   SQLi-PRONE PARAMETERS ({len(sqli_params)}):\n")
                 f.write("  " + "="*95 + "\n")
                 for param in sqli_params:
                     f.write(f"  {param}\n")
-                f.write("\n  💡 Test with: ' OR '1'='1, 1' UNION SELECT NULL--\n\n")
+                f.write("\n   Test with: ' OR '1'='1, 1' UNION SELECT NULL--\n\n")
             
             lfi_params = categorized.get('lfi', [])
             if lfi_params:
-                f.write(f"  🎯 LFI-PRONE PARAMETERS ({len(lfi_params)}):\n")
+                f.write(f"   LFI-PRONE PARAMETERS ({len(lfi_params)}):\n")
                 f.write("  " + "="*95 + "\n")
                 for param in lfi_params:
                     f.write(f"  {param}\n")
-                f.write("\n  💡 Test with: ../../../etc/passwd, ../../../../windows/win.ini\n\n")
+                f.write("\n   Test with: ../../../etc/passwd, ../../../../windows/win.ini\n\n")
             
             idor_params = categorized.get('idor', [])
             if idor_params:
-                f.write(f"  🎯 IDOR-PRONE PARAMETERS ({len(idor_params)}):\n")
+                f.write(f"   IDOR-PRONE PARAMETERS ({len(idor_params)}):\n")
                 f.write("  " + "="*95 + "\n")
                 for param in idor_params:
                     f.write(f"  {param}\n")
-                f.write("\n  💡 Test with: Change ID values, enumerate sequential IDs\n\n")
+                f.write("\n   Test with: Change ID values, enumerate sequential IDs\n\n")
             
             ssrf_params = categorized.get('ssrf', [])
             if ssrf_params:
-                f.write(f"  🎯 SSRF-PRONE PARAMETERS ({len(ssrf_params)}):\n")
+                f.write(f"   SSRF-PRONE PARAMETERS ({len(ssrf_params)}):\n")
                 f.write("  " + "="*95 + "\n")
                 for param in ssrf_params:
                     f.write(f"  {param}\n")
-                f.write("\n  💡 Test with: http://169.254.169.254/latest/meta-data/, http://localhost:80\n\n")
+                f.write("\n   Test with: http://169.254.169.254/latest/meta-data/, http://localhost:80\n\n")
             
             redirect_params = categorized.get('open_redirect', [])
             if redirect_params:
-                f.write(f"  🎯 OPEN REDIRECT-PRONE PARAMETERS ({len(redirect_params)}):\n")
+                f.write(f"   OPEN REDIRECT-PRONE PARAMETERS ({len(redirect_params)}):\n")
                 f.write("  " + "="*95 + "\n")
                 for param in redirect_params:
                     f.write(f"  {param}\n")
-                f.write("\n  💡 Test with: //evil.com, https://evil.com, javascript:alert(1)\n\n")
+                f.write("\n   Test with: //evil.com, https://evil.com, javascript:alert(1)\n\n")
             
             # Write all parameters
             param_list = params.get('list', [])
@@ -863,13 +863,13 @@ class DeepReconScanner:
             f.write(f"  Total Issues Found: {vuln_count}\n\n")
             
             if vuln_count > 0:
-                f.write("  ⚠️  VULNERABILITY FINDINGS:\n")
+                f.write("    VULNERABILITY FINDINGS:\n")
                 vuln_list = vulns.get('list', [])
                 for i, vuln in enumerate(vuln_list, 1):
                     f.write(f"    {i}. {vuln}\n")
             else:
                 f.write("  ✓ No critical vulnerabilities detected by automated scan\n")
-                f.write("  💡 Manual testing still recommended\n")
+                f.write("   Manual testing still recommended\n")
             
             # SUMMARY
             f.write("\n" + "="*100 + "\n")
@@ -881,7 +881,7 @@ class DeepReconScanner:
             f.write(f"  Attack Surface:\n")
             f.write(f"    • Subdomains: {findings.get('subdomains', {}).get('total', 0)}\n")
             f.write(f"    • Live Hosts: {findings.get('subdomains', {}).get('alive', 0)}\n")
-            f.write(f"    • 🔒 403 Forbidden Hosts: {findings.get('subdomains', {}).get('forbidden_count', 0)}\n")
+            f.write(f"    •  403 Forbidden Hosts: {findings.get('subdomains', {}).get('forbidden_count', 0)}\n")
             f.write(f"    • URLs: {findings.get('urls', {}).get('count', 0)}\n")
             f.write(f"    • Parameters: {findings.get('parameters', {}).get('count', 0)}\n")
             f.write(f"    • API Endpoints: {findings.get('api_endpoints', {}).get('count', 0)}\n\n")
@@ -897,11 +897,11 @@ class DeepReconScanner:
             f.write("  END OF REPORT\n")
             f.write("="*100 + "\n")
         
-        print(f"\n✅ MASTER REPORT SAVED!")
-        print(f"📄 File: {report_file}")
-        print(f"📊 All findings in ONE document - NO separate files!")
-        print(f"\n💡 Read it with: cat {report_file}")
-        print(f"💡 Or open in editor: nano {report_file}\n")
+        print(f"\n MASTER REPORT SAVED!")
+        print(f" File: {report_file}")
+        print(f" All findings in ONE document - NO separate files!")
+        print(f"\n Read it with: cat {report_file}")
+        print(f" Or open in editor: nano {report_file}\n")
     
     def run_full_scan(self):
         """Execute all recon modules"""
@@ -922,10 +922,10 @@ class DeepReconScanner:
             self.generate_report()
             
         except KeyboardInterrupt:
-            print("\n\n⚠️  Scan interrupted by user")
+            print("\n\n  Scan interrupted by user")
             self.generate_report()
         except Exception as e:
-            print(f"\n❌ Error during scan: {e}")
+            print(f"\n Error during scan: {e}")
 
 def main():
     import sys
