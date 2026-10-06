@@ -18,7 +18,7 @@ Deep Recon is an automated reconnaissance tool designed for security researchers
 **I hashed many details so that it could be simple for me to modify the code and dont get lost in it.**
 **GG fellow sec**
 
-## ⚠️ Legal Disclaimer
+##  Legal Disclaimer
 
 **FOR AUTHORIZED SECURITY TESTING ONLY**
 
@@ -26,7 +26,7 @@ This tool is intended for legal security research and authorized penetration tes
 
 The author is not responsible for misuse or damage caused by this tool. Use responsibly and ethically.
 
-## ✨ Features  ✅📄📊💡💡💡💡💡💡💡💡💡💡💡
+##  Features
 
 - **Technology Detection**: Identifies web servers, frameworks, CMS platforms, and frontend technologies
 - **WAF Detection**: Detects Web Application Firewalls protecting the target
@@ -40,7 +40,7 @@ The author is not responsible for misuse or damage caused by this tool. Use resp
 - **Vulnerability Scanning**: Automated CVE and misconfiguration detection using Nuclei
 - **Comprehensive Reporting**: Generates detailed reports with actionable findings
 
-## 🔧 Prerequisites
+##  Prerequisites
 
 ### Python Requirements
 - Python 3.8 or higher
@@ -65,7 +65,7 @@ The following tools must be installed and available in your PATH:
 ### System Tools
 - `openssl` - For SSL/TLS analysis (usually pre-installed on Linux/macOS)
 
-## 📦 Installation
+##  Installation
 ```bash
 <(curl -s https://raw.githubusercontent.com/brayo-crypto/deep_recon/main/install-docker.sh)
 ```
@@ -74,7 +74,7 @@ The following tools must be installed and available in your PATH:
 python3 deep_recon.py <target_url>
 ```
 
-## 📊 Output
+##  Output
 
 The tool generates a comprehensive report file:
 - **Filename**: `{domain}_FULL_RECON_REPORT.txt`
@@ -94,7 +94,7 @@ The tool generates a comprehensive report file:
 10. Vulnerabilities Detected (Nuclei findings)
 11. Executive Summary
 
-## 🎯 Key Features Explained
+##  Key Features Explained
 
 ### Vulnerability-Focused Categorization
 The tool automatically categorizes findings by vulnerability type:
@@ -125,7 +125,7 @@ Factors affecting duration:
 - Nuclei template coverage
 - Network latency
 
-## 🛠️ Troubleshooting
+##  Troubleshooting
 
 ### Common Issues
 
@@ -146,7 +146,7 @@ Factors affecting duration:
 - Large scans may timeout; consider increasing timeout values in code
 - Check network stability
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! Please feel free to submit pull requests or open issues for bugs and feature requests.
 
@@ -157,17 +157,17 @@ Contributions are welcome! Please feel free to submit pull requests or open issu
 4. Push to the branch (`git push origin feature/Features`)
 5. Open a Pull Request
 
-## 📝 License
+##  License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👤 Author
+##  Author
 
 **Yobra/Brayo**
 - Discord: yobra8752
 - GitHub: [@brayo-crypto](https://github.com/yourusername)
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 This tool leverages several excellent open-source projects:
 - [ProjectDiscovery](https://github.com/projectdiscovery) - subfinder, httpx, nuclei, katana
